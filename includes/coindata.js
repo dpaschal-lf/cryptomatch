@@ -2,7 +2,7 @@ var coinData = [
 	{
 		name: 'Bitcoin',
 		'class': 'bitcoinLogo',
-		image: 'images/BC_logo_.png',
+		image: 'images/bitcoin.png',
 		count: 2,
 		cards: [],
 		currentPrice: 25.00

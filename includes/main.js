@@ -80,6 +80,9 @@ function playSound(file, volume=1){
 }
 
 function handleCoinClick( clickedCoinData, clickedElement ){
+	if($(clickedElement).hasClass('revealed')){
+		return;
+	}
 	if(currentlySelectedElements.length<2){
 		currentlySelectedElements.push({ data: clickedCoinData, element: clickedElement});
 		flipCard(clickedElement);
@@ -105,7 +108,7 @@ function handleCoinClick( clickedCoinData, clickedElement ){
 				revertCardsStart();
 			}
 		} else{
-			displayMessage('not enough money, sell coins by clicking on them to get more money')
+			displayMessage('not enough money, sell coins by clicking on them on the left and earn more money')
 			revertCardsStart();
 			playSound(sounds.error);
 		}
@@ -256,10 +259,10 @@ function drawChart(context, data){
 
 
 function flipCard(element){
-	$(element).find('.back').hide();
+	$(element).addClass('revealed');
 }
 function revertCard(element){
-	$(element).find('.back').show();
+	$(element).removeClass('revealed')
 }
 
 

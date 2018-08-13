@@ -120,6 +120,9 @@ body{
 	font-size: 2em;
 	text-align: center;
 }
+.revealed .back{
+	display: none;
+}
 
 
 
