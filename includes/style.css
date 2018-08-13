@@ -1,0 +1,133 @@
+body{
+	margin: 0;
+	height: 100vh;
+	width: 100vw;
+}
+#coinRepo, #coinMatches{
+	float: left;
+	height: 100%;
+	box-sizing: border-box;	
+}
+#coinRepo{
+	width: 30%;
+	background-color: pink;
+}
+#coinMatches{
+	width: 70%;
+	background-color: lightgreen;
+}
+.coinContainer{
+	width: 16.6%;
+	height: 33%;
+	float: left;
+	background-color: lightyellow;
+	text-align: center;
+	position: relative;
+}
+.coin{
+	height: 10vmin;
+	width: 10vmin;
+	background-color: white;
+	border: 3px inset silver;
+	border-radius: 50%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.back, .front{
+	border-radius: 50%;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+}
+.back{
+	font-size: 10vmin;
+	color: red;
+	background-color: silver;
+	line-height: 10vmin;
+}
+.front{
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#walletContainer{
+	height: 80%;
+	background-color: pink;
+}
+#walletContainer > *{
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+#exchangeTracker{
+	height: 20%;
+	background-color: lightblue;
+}
+#playerWallet{
+	background-color: purple;
+}
+#coinExchange{
+	background-color: black;
+}
+#exchangeTracker > .walletCoinContainer{
+	background-color: pink;
+	font-size: 0;
+}
+.coinLogo{
+	width: 10%;
+	height: 2vh;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: inline-block;
+	padding: 0 5px 10px;
+	box-sizing: border-box;
+}
+.coinPrice{
+	display: inline-block;
+	width: 30%;
+	font-size: .8rem;
+	color: white;
+}
+.higherPrice { 
+	color: lime;
+}
+.lowerPrice{
+	color: red;
+}
+.coinChart{
+	width: 100%;
+	font-size: 1rem;
+	display: inline-block;
+	height: 5.5vh;
+}
+/* coin logos */
+.ethereumLogo{
+	background-size: 160%;
+}
+.rippleLogo{
+	background-size: 74%;
+}
+
+.coinChart{
+	background-color: white;
+}
+#money{
+	font-size: 2em;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
