@@ -123,7 +123,9 @@ body{
 .revealed .back{
 	display: none;
 }
-
+.previouslyMatched .back{
+	opacity: .4;
+}
 
 
 

@@ -3,7 +3,7 @@ $(document).ready(startApp);
 
 var coinsMatched = 0;
 const coinExchangeUpdateInterval = 1750;
-const coinReturnTimer = 3000;
+const coinReturnTimer = 1500;
 const cryptoLocations = {
 	playerWallet: [],
 	exchange: []
@@ -35,40 +35,40 @@ function startApp(){
 }
 
 function makeCards(coins){
-
 	var cardArray = [];
 	for(let coinIndex = 0; coinIndex < coins.length; coinIndex++){
 		var thisCoin = coins[coinIndex];
 		for(var count=0; count<thisCoin.count; count++){
-		var coinContainer = $("<div>",{
-			'class': 'coinContainer'
-		});
-		thisCoin.cards.push(coinContainer);
+			var coinContainer = $("<div>",{
+				'class': 'coinContainer'
+			});
+			thisCoin.cards.push(coinContainer);
 
-		coinContainer.click( function(){
-			handleCoinClick(coins[coinIndex], event.currentTarget);
-		});
-		var coin = $("<div>",{
-			'class': 'coin'
-		});
-		var front = $("<div>",{
-			'class':'front '+ thisCoin.class,
-			css: {
-				backgroundImage: `url(${thisCoin.image})`
-			}
-		});
-		var back;
-		var back = $("<div>",{
-			'class':'back',
-			text: '$'
-		});
-		coin.append(front, back);
-		coinContainer.append(coin);
-		cardArray.push(coinContainer);			
+			coinContainer.click( function(){
+				handleCoinClick(coins[coinIndex], event.currentTarget);
+			});
+			var coin = $("<div>",{
+				'class': 'coin'
+			});
+			var front = $("<div>",{
+				'class':'front '+ thisCoin.class,
+				css: {
+					backgroundImage: `url(${thisCoin.image})`
+				}
+			});
+			var back;
+			var back = $("<div>",{
+				'class':'back',
+				text: '$'
+			});
+			coin.append(front, back);
+			coinContainer.append(coin);
+			cardArray.push(coinContainer);			
 		}
 		
 
 	}
+	cardArray = randomizeArray( cardArray );
 	$("#coinMatches").append(cardArray);
 }
 
@@ -92,6 +92,8 @@ function handleCoinClick( clickedCoinData, clickedElement ){
 	if(currentlySelectedElements.length===2){
 		if(playerMoney>= clickedCoinData.exchangeData.currentPrice){
 			if(currentlySelectedElements[0].data.name === currentlySelectedElements[1].data.name){
+				$(currentlySelectedElements[0].element).addClass('previouslyMatched');
+				$(currentlySelectedElements[1].element).addClass('previouslyMatched');
 				coinsMatched+=2;
 				playerMoney-=clickedCoinData.exchangeData.currentPrice;
 				updateMoneyDisplay();
@@ -237,7 +239,6 @@ function drawChart(context, data){
 	// if(max<data.purchasePrice){
 	// 	max = data.purchasePrice;
 	// }
-	debugger;
 	context.beginPath();
 	context.moveTo(0,height -( data.priceHistory[0]/max)*height);
 	for(var x = 1; x < data.priceHistory.length; x++){
@@ -265,6 +266,16 @@ function revertCard(element){
 	$(element).removeClass('revealed')
 }
 
+
+function randomizeArray( array ){
+	var sourceArray = array.slice();
+	var newArray = [];
+	while( sourceArray.length ){
+		var randomIndex = Math.floor( Math.random() * sourceArray.length );
+		newArray.push( sourceArray.splice( randomIndex, 1 )[0]);
+	}
+	return newArray;
+}
 
 
 
